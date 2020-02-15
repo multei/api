@@ -1,0 +1,28 @@
+{
+  "name": "@multei/bff",
+  "version": "0.1.0",
+  "description": "Multei! Back-end for front-end built on Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/multei/bff.git"
+  },
+  "keywords": [
+    "multei",
+    "bff",
+    "multei",
+    "bff",
+    "multei",
+    "node.js",
+    "bff"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/multei/bff/issues"
+  },
+  "homepage": "https://github.com/multei/bff#readme"
+}
