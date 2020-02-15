@@ -2,12 +2,13 @@ const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
 const app = express()
+const env = process.env.NODE_ENV || 'development'
 
 const { Pool } = require('pg')
 
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
-    ssl: true
+    ssl: env === 'development' ? false : true
 })
 
 app.get('/', (req, res) => {
