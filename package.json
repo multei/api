@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/multei/bff/issues"
   },
-  "homepage": "https://github.com/multei/bff#readme"
+  "homepage": "https://github.com/multei/bff#readme",
+  "engines": {
+    "node": "12.x"
+  }
 }
