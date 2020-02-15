@@ -27,5 +27,8 @@
   "homepage": "https://github.com/multei/bff#readme",
   "engines": {
     "node": "12.x"
+  },
+  "dependencies": {
+    "pg": "7.18.1"
   }
 }
