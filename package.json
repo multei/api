@@ -26,9 +26,11 @@
   },
   "homepage": "https://github.com/multei/bff#readme",
   "engines": {
-    "node": "12.x"
+    "node": ">=12.16.0",
+    "npm": ">=6.13.4"
   },
   "dependencies": {
+    "express": "^4.17.1",
     "pg": "7.18.1"
   }
 }
