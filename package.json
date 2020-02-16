@@ -30,7 +30,10 @@
     "npm": ">=6.13.6"
   },
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "4.17.1",
     "pg": "7.18.1"
+  },
+  "devDependencies": {
+    "dotenv": "8.2.0"
   }
 }
