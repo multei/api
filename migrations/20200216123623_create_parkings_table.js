@@ -1,16 +1,25 @@
 const name = 'parkings';
 
-exports.up = knex => knex.schema.createTable(name, table => {
-  table.increments('id').notNullable();
-  table.uuid('uuid');
+exports.up = (knex, Promise) => knex.raw('CREATE EXTENSION IF NOT EXISTS "uuid-ossp";').then(
+  () =>
+    knex.schema.createTable(name, table => {
 
-  table.string('car_color').notNullable();
-  table.string('car_make_model').notNullable();
-  table.string('car_model').notNullable();
-  table.string('car_plate', 7).notNullable();
+      knex.raw();
 
-  table.specificType('coordinates', 'POINT').nullable();
-});
+      table.increments('id').notNullable().primary().unique();
+      table.uuid('uuid').defaultTo(knex.raw('uuid_generate_v4()')).unique();
+
+      table.string('car_color').notNullable();
+      table.string('car_make').notNullable();
+      table.string('car_make_model').notNullable();
+      table.string('car_plate', 7).notNullable();
+
+      table.specificType('coordinates', 'POINT').nullable();
+
+      table.index('car_plate');
+      table.index('uuid');
+
+    }));
 
 exports.down = knex => knex.schema.dropTable(name);
 
