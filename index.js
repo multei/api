@@ -1,7 +1,6 @@
 require('dotenv').config()
 
 const express = require('express')
-const path = require('path')
 const PORT = process.env.PORT || 5000
 const app = express()
 const env = process.env.NODE_ENV || 'development'
@@ -10,7 +9,7 @@ const { Pool } = require('pg')
 
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
-    ssl: env === 'development' ? false : true
+    ssl: process.env.DATABASE_SSL || true
 })
 
 app.get('/', (req, res) => {
