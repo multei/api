@@ -2,11 +2,20 @@
 
 ## Running locally
 
-Make sure you have [Node.js](http://nodejs.org/) installed.
+Make sure you have [Node.js](http://nodejs.org/) and Heroku installed.
 
 ```shell script
 npm install
-npm start
+npm run develop:heroku
+```
+
+## Deploying to Heroku
+
+Make sure you have installed and logged in at Heroku.
+
+```shell script
+npm install
+npm run deploy:heroku
 ```
 
 ## Documentation
