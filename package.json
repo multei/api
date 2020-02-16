@@ -35,7 +35,7 @@
     "express": "4.17.1",
     "knex": "0.20.10",
     "morgan": "1.9.1",
-    "openalpr": "0.1.9",
+    "openalpr": "0.1.11",
     "pg": "7.18.1"
   },
   "devDependencies": {
