@@ -4,7 +4,8 @@
   "description": "Multei! Back-end for front-end built on Node.js",
   "main": "index.js",
   "scripts": {
-    "develop": "nodemon --exec \"heroku local\" --signal SIGTERM",
+    "deploy:heroku": "git push heroku master",
+    "develop:heroku": "nodemon --exec \"heroku local\" --signal SIGTERM",
     "heroku-postbuild": "knex migrate:latest",
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
