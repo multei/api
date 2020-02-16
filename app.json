@@ -1,6 +1,6 @@
 {
-  "name": "Multei! BFF",
-  "description": "A back-end for front-end used by Multei!",
-  "repository": "https://github.com/multei/bff",
-  "keywords": ["multei", "bff", "multei bff", "node", "multei node bff", "node bff"]
+  "name": "Multei! API",
+  "description": "Multei! ",
+  "repository": "https://github.com/multei/api",
+  "keywords": ["multei", "api", "multei api", "node", "multei node api", "node api"]
 }

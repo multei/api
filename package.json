@@ -1,34 +1,31 @@
 {
-  "name": "@multei/bff",
+  "name": "@multei/api",
   "version": "0.1.0",
-  "description": "Multei! Back-end for front-end built on Node.js",
+  "description": "Multei! API",
   "main": "index.js",
   "scripts": {
     "deploy:heroku": "git push heroku master",
     "develop:heroku": "nodemon --exec \"heroku local\" --signal SIGTERM",
     "heroku-postbuild": "knex migrate:latest",
+    "install:clean": "rm -rf node_modules && npm install",
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/multei/bff.git"
+    "url": "git+https://github.com/multei/api.git"
   },
   "keywords": [
     "multei",
-    "bff",
-    "multei",
-    "bff",
-    "multei",
-    "node.js",
-    "bff"
+    "api",
+    "node.js"
   ],
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/multei/bff/issues"
+    "url": "https://github.com/multei/api/issues"
   },
-  "homepage": "https://github.com/multei/bff#readme",
+  "homepage": "https://github.com/multei/api#readme",
   "engines": {
     "node": ">=13.8.0",
     "npm": ">=6.13.6"
