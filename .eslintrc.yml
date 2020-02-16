@@ -4,6 +4,7 @@ env:
   browser: true
   commonjs: true
   es6: true
+  jest: node
   node: true
 extends: 'eslint:recommended'
 globals:
