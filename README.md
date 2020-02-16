@@ -1,4 +1,4 @@
-# Multei! Back-end for front-end
+# Multei! API
 
 ## Running locally
 
