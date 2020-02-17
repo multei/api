@@ -22,7 +22,10 @@ module.exports = async (req, res, next) => {
 
   const handleRecognitionSuccess = result => {
 
-    console.log('Recognition', result);
+    if(result.error_code === 400) {
+      res.status(400).send(result);
+      next();
+    }
 
     const dbSuccessCallback = response => {
       /*res.status(200).send(response);
