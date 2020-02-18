@@ -6,25 +6,21 @@ const openALPR = require('openalpr').create({
 module.exports = async (req, res, next) => {
 
   if(typeof process.env.OPENALPR_SECRET_KEY === 'undefined') {
-    res.status(500).send({status: 'error', message: 'Can not recognize vehicle because of internal API issues'});
-    next();
+    return res.status(500).send({status: 'error', message: 'Can not recognize vehicle because of internal API issues'});
   }
 
   if(typeof req.body !== 'object') {
-    res.status(400).send({status: 'error', message: 'Request body is missing'});
-    next();
+    return res.status(400).send({status: 'error', message: 'Request body is missing'});
   }
 
   if(typeof req.body['car_front_base64'] === 'undefined') {
-    res.status(400).send({status: 'error', message: 'Car front base64 image is missing'});
-    next();
+    return res.status(400).send({status: 'error', message: 'Car front base64 image is missing'});
   }
 
   const handleRecognitionSuccess = result => {
 
     if(result.error_code === 400) {
-      res.status(400).send(result);
-      next();
+      return res.status(400).send(result);
     }
 
     const dbSuccessCallback = response => {
