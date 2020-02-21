@@ -1,14 +1,14 @@
 const knex = require('../../../knex');
+const createError = require('http-errors')
 
-const getSingleParking = async (req, res, next) => {
+module.exports = async (req, res, next) => {
 
   const {uuid} = req.params;
   const uuidPattern = new RegExp('[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}');
   const uuidIsValid = uuidPattern.test(uuid);
 
   if(!uuidIsValid) {
-    res.status(400).send(`Please provide a valid UUID for this parking. Received: ${uuid}`);
-    next();
+    return next(createError(400, `Please provide a valid UUID for this parking. Received: ${uuid}`))
   }
 
   const columns = ['car_color', 'car_make', 'car_make_model', 'car_plate', 'coordinates'];
@@ -29,5 +29,3 @@ const getSingleParking = async (req, res, next) => {
     .where({uuid: req.params.uuid})
     .then(successCallback).catch(errorCallback);
 };
-
-module.exports = getSingleParking;

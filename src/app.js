@@ -1,20 +1,21 @@
 const express = require('express');
+const dotenv = require('dotenv')
+const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
-const handleNotFound = require('./middlewares/handleNotFound');
-const handleServerErrors = require('./middlewares/handleServerErrors');
-const addHeaders = require('./middlewares/addHeaders');
+dotenv.config()
 
 const app = express();
 
-app.use(express.json());
 app.use(logger('dev'));
-app.use(express.urlencoded({extended: false}));
-app.use(addHeaders);
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(require('./middlewares/addHeaders'))
 
-app.use('/', require('./api'));
+app.use('/', require('./routes/index'));
 
-app.use(handleNotFound);
-app.use(handleServerErrors);
+app.use(require('./middlewares/handleNotFound'))
+app.use(require('./middlewares/handleServerErrors'))
 
 module.exports = app;

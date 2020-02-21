@@ -1,6 +1,6 @@
 const knex = require('../../../knex');
 
-const getParkings = async (req, res, next) => {
+module.exports= async (req, res) => {
   const successCallback = rows => res.json(rows);
   const errorCallback = error => { console.log(error); res.status(500).json; };
   const columns = ['car_color', 'car_make', 'car_make_model', 'car_plate', 'coordinates'];
@@ -8,5 +8,3 @@ const getParkings = async (req, res, next) => {
     .then(successCallback)
     .catch(errorCallback);
 };
-
-module.exports = getParkings;

@@ -1,6 +1,7 @@
+const createError = require('http-errors');
+
 function handleNotFound(req, res, next) {
-  res.status(404).send({status: 'error', message: `Endpoint ${req.url} not found.`});
-  next();
+  next(createError(404, `Endpoint ${req.url} not found`));
 }
 
 module.exports = handleNotFound;
