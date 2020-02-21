@@ -1,5 +1,4 @@
 STAGED_FILES=$(git diff --name-only --diff-filter=ACM | grep "js$")
-echo "$STAGED_FILES"
 
 if [[ "$STAGED_FILES" = "" ]]; then
     exit 0
