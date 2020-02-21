@@ -29,7 +29,7 @@
   "homepage": "https://github.com/multei/api#readme",
   "engines": {
     "node": ">=13.8.0",
-    "npm": ">=6.13.6"
+    "npm": ">=6.13.7"
   },
   "dependencies": {
     "@google-cloud/storage": "4.3.1",
