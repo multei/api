@@ -4,15 +4,6 @@
   "description": "Multei! API",
   "private": false,
   "main": "index.js",
-  "scripts": {
-    "deploy:heroku": "git push heroku master",
-    "develop:heroku": "nodemon --exec \"heroku local\" --signal SIGTERM",
-    "heroku-postbuild": "knex migrate:latest",
-    "install:clean": "rm -rf node_modules && npm install",
-    "start": "node ./bin/www",
-    "stryker": "stryker run",
-    "test": "jest"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/multei/api.git"
@@ -56,9 +47,19 @@
     "nodemon": "2.0.2",
     "supertest": "4.0.2"
   },
+  "scripts": {
+    "deploy:heroku": "git push heroku master",
+    "develop:heroku": "nodemon --exec \"heroku local\" --signal SIGTERM",
+    "heroku-postbuild": "knex migrate:latest",
+    "install:clean": "rm -rf node_modules && npm install",
+    "start": "node ./bin/www",
+    "stryker": "stryker run",
+    "test": "jest",
+    "test:staged": "jest --bail --findRelatedTests --passWithNoTests $(git diff --name-only --diff-filter=ACM | grep \"js$\")"
+  },
   "husky": {
     "hooks": {
-      "pre-commit": "npm test",
+      "pre-commit": "npm run test:staged",
       "pre-push": "npm test"
     }
   }
