@@ -59,7 +59,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run test:staged",
+      "pre-commit": "sh bin/test-staged.sh",
       "pre-push": "npm test"
     }
   }
