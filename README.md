@@ -1,4 +1,5 @@
 # Multei! API
+[![Travis Build Status](https://travis-ci.org/multei/api.svg?branch=master)](https://travis-ci.org/multei/api)
 
 ## Running locally
 
