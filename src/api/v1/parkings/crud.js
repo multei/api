@@ -2,9 +2,8 @@ const bodyParser = require('body-parser')
 const createError = require('http-errors')
 const debug = require('debug')('app:api:parkings:crud')
 const express = require('express')
-
-const multer = require('../../../lib/multer')
-const { sendUploadedFileToGCS } = require('../../../lib/googleCloudStorage');
+const googleCloudStorage = require('../../../middlewares/googleCloudStorage')
+const multerUpload = require('../../../middlewares/multerUpload')
 const { create } = require('./db')
 
 debug('On crud.js file')
@@ -18,16 +17,12 @@ debug('Before setting body parser to URL encoded')
 router.use(bodyParser.urlencoded({extended: false, limit: '1mb'}))
 debug('After setting body parser to URL encoded')
 
-const multerMiddleware = multer.single('carFrontPhoto')
-debug('Configuring Multer middleware: %o', multerMiddleware)
-
 debug('Configuring POST /v1/parkings')
 router.post(
   '/',
-  multerMiddleware,
-  sendUploadedFileToGCS,
+  multerUpload.single('carFrontPhoto'),
+  googleCloudStorage.sendUploadedFileToGCS,
   async (req, res, next) => {
-
     debug('Getting request body data')
     let data = req.body;
 

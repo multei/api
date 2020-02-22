@@ -7,14 +7,14 @@ debug('Loading multer...')
 const Multer = require('multer')
 
 const multerConfig = {
-  storage: Multer.memoryStorage(),
   limits: {
     fileSize: 5 * 1024 * 1024
   },
+  storage: Multer.memoryStorage(),
 }
 
 debug('Configuring multer with %o', multerConfig)
-const multer = Multer(multerConfig);
+const multerUpload = Multer(multerConfig);
 debug('Finishing multer config...')
 
-module.exports = multer
+module.exports = multerUpload
