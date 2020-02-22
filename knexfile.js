@@ -1,4 +1,7 @@
+const debug = require('debug')('app:knexfile')
 require('dotenv').config();
+
+debug('On knexfile.js')
 
 module.exports = {
 
@@ -13,3 +16,5 @@ module.exports = {
   }
 
 };
+
+debug('End of knexfile.js')

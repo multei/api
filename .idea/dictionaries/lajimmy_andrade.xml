@@ -4,10 +4,16 @@
       <w>automerge</w>
       <w>axios</w>
       <w>dotenv</w>
+      <w>gcloudignore</w>
+      <w>gitignore</w>
       <w>knex</w>
+      <w>knexfile</w>
+      <w>middlewares</w>
       <w>multei</w>
+      <w>multer</w>
       <w>parkings</w>
       <w>postgresql</w>
+      <w>resumable</w>
       <w>transpilers</w>
     </words>
   </dictionary>

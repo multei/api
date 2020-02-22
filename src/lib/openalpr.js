@@ -1,4 +1,3 @@
-const knex = require('../../../knex');
 const openALPR = require('openalpr').create({
   secretKey: process.env.OPENALPR_SECRET_KEY
 });
@@ -18,27 +17,9 @@ module.exports = async (req, res, next) => {
   }
 
   const handleRecognitionSuccess = result => {
-
     if(result.error_code === 400) {
       return res.status(400).send(result);
     }
-
-    const dbSuccessCallback = response => {
-      /*res.status(200).send(response);
-      next();*/
-    };
-
-    const dbErrorCallback = error => {
-      /*console.error('DB error callback', error);
-      res.status(500).send({status: 'error', message: 'Error when creating a irregular parking report'});
-      next();*/
-    };
-
-    const data = {
-      car_color: null
-    };
-
-    knex('parkings').insert(data).then(dbSuccessCallback).catch(dbErrorCallback);
   };
 
   const handleRecognitionError = error => {
