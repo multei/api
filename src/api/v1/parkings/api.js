@@ -13,7 +13,7 @@ router.use(bodyParser.json())
  */
 router.get('/', async (req, res) => {
   const successCallback = rows => res.json(rows);
-  const errorCallback = error => { console.log(error); res.status(500).json; };
+  const errorCallback = error => { res.status(500).json; };
 
   const columns = ['car_color', 'car_make', 'car_make_model', 'car_plate', 'coordinates'];
   list().then(successCallback).catch(errorCallback);
@@ -44,24 +44,6 @@ router.get('/:parking', async (req, res, next) => {
   };
   read(uuid).then(successCallback).catch(errorCallback);
 
-})
-
-/**
- * POST /v1/parkings
- */
-router.post('/', async (req, res, next) => {
-  const successCallback = response => {
-    res.status(200).send(response);
-    next();
-  };
-  const errorCallback = error => {
-    console.log(error)
-    next(createError(500, 'Error when creating a irregular parking report'));
-  }
-  const data = {
-    car_color: null
-  };
-  create(data).then(successCallback).catch(errorCallback);
 })
 
 /**

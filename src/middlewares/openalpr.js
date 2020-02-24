@@ -7,6 +7,8 @@ const openALPR = require('openalpr').create({
 
 module.exports = async (req, res, next) => {
 
+  debug('Entered OpenALPR middleware...')
+
   if(typeof process.env.OPENALPR_SECRET_KEY === 'undefined') {
     return next(createError(500, 'Can not recognize vehicle because of internal API issues'));
   }
@@ -19,20 +21,9 @@ module.exports = async (req, res, next) => {
       return next(createError(400, 'Can not recognize vehicle'))
     }
 
-    req.carData = {
-      car_color: null,
-      car_make: null,
-      car_make_model: null,
-      car_plate: null,
-    }
+    debug('Success recognizing vehicle!');
+    req.vehicleData = result;
 
-    debug('Success recognizing vehicle: %o', result);
-    return next(result)
-  };
-
-  const handleRecognitionError = error => {
-    console.log(error)
-    return next(error)
   };
 
   try {
@@ -43,11 +34,13 @@ module.exports = async (req, res, next) => {
     const result = await openALPR.recognize(encoded);
 
     debug('Starting to handle recognition...')
-    return handleRecognition(result);
+    handleRecognition(result);
+
+    next()
 
   } catch(err) {
     debug('Vehicle recognition failed')
-    return handleRecognitionError(err);
+    next(err)
   }
 
 }

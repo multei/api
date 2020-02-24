@@ -53,6 +53,8 @@ function getFileNameOnStorage(originalName) {
  */
 function uploadFile(req, res, next) {
 
+  debug('Entered Google Cloud Storage middleware upload function...')
+
   /**
    * Bucket name
    *
@@ -108,12 +110,16 @@ function uploadFile(req, res, next) {
 
     req.file.cloudStoragePublicUrl = getPublicUrl(CLOUD_BUCKET, googleCloudStorageName)
     debug('File public URL is %o', req.file.cloudStoragePublicUrl)
-    next()
+
+    debug('Going to next middleware...')
+    return next()
 
   })
 
   debug('Finishing stream setting file buffer: %o', req.file.buffer)
   blobStream.end(req.file.buffer)
+
+  debug('Google Cloud Storage middleware finishing...')
 
 }
 
