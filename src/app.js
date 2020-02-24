@@ -10,9 +10,8 @@ dotenv.config()
 const app = express();
 
 app.disable('etag')
+app.disable('x-powered-by')
 app.use(logger('dev'));
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(require('./middlewares/addHeaders'))
 
