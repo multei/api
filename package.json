@@ -13,7 +13,7 @@
   "homepage": "https://github.com/multei/api#readme",
   "private": false,
   "scripts": {
-    "debug": "DEBUG=app:* node ./bin/www",
+    "debug": "DEBUG=app:*,openalpr:* node ./bin/www",
     "deploy:heroku": "git push heroku master",
     "develop:heroku": "nodemon --exec \"clear && heroku local\" --signal SIGTERM",
     "heroku-postbuild": "knex migrate:latest",
@@ -51,10 +51,10 @@
     "knex": "0.20.10",
     "morgan": "1.9.1",
     "multer": "1.4.2",
-    "openalpr": "0.1.11",
+    "openalpr": "0.2.3",
     "pg": "7.18.2",
-    "http-errors": "latest",
-    "body-parser": "latest"
+    "http-errors": "1.7.3",
+    "body-parser": "1.19.0"
   },
   "devDependencies": {
     "@stryker-mutator/core": "2.5.0",
