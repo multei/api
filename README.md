@@ -19,7 +19,29 @@ npm install
 npm run deploy:heroku
 ```
 
-## Documentation
+## Google Cloud Storage
+
+This API uploads images to the Google Cloud storage service.
+To be able to upload, you need to have a service account on Google Cloud Storage with the adequate permissions.
+
+So you need to:
+
+1. Go to [APIs & Services](https://console.cloud.google.com/apis/dashboard);
+2. On the menu on left panel, tap on [Credentials](https://console.cloud.google.com/apis/credentials);
+3. At **Service Accounts** section, tap on [Manage Service Accounts](https://console.cloud.google.com/iam-admin/serviceaccounts);
+4. Click on [Create Service Account](https://console.cloud.google.com/iam-admin/serviceaccounts/create);
+5. Type a name, ID and description for the new Service Account;
+6. On **Service account permissions (optional)**, add a role with permissions to view and create objects on storage;
+7. Click on **Continue**;
+8. On **Create a key (optional)**, click on **+Create Key**;
+9. On **Key type**, choose the **JSON (recommended)** option;
+10. Click on **Create**. The JSON key file will be downloaded;
+11. Put this key file on `config/` directory on repository (create the directory if it does not exist);
+    **Never commit this file!**
+12. At local development environment, on your .env file, set `GOOGLE_APPLICATION_CREDENTIALS` to `config/multei-{key}.json`, where `multei-{key}.json` is the actual filename;
+13. If your application was already running, restart it.
+
+## New at Node.js?
 
 For more information about Node.js (used in this project),
 see [Best Practices for Node.js Development](https://devcenter.heroku.com/articles/node-best-practices).
