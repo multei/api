@@ -13,7 +13,7 @@
   "homepage": "https://github.com/multei/api#readme",
   "private": false,
   "scripts": {
-    "debug": "DEBUG=app:*,openalpr:* node ./bin/www",
+    "debug": "DEBUG=app:*,openalpr:* nodemon --exec \" clear && ./bin/www\" --signal SIGTERM",
     "deploy:heroku": "git push heroku master",
     "develop:heroku": "nodemon --exec \"clear && heroku local\" --signal SIGTERM",
     "heroku-postbuild": "knex migrate:latest",
