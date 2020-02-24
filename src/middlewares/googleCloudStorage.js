@@ -1,6 +1,6 @@
 'use strict';
 const createError = require('http-errors')
-const debug = require('debug')('app:lib:gcs')
+const debug = require('debug')('app:middlewares:gcs')
 
 debug('At googleCloudStorage.js')
 

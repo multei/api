@@ -1,5 +1,5 @@
 'use strict';
-const debug = require('debug')('app:lib:multer')
+const debug = require('debug')('app:middlewares:multer')
 
 debug('At multer.js')
 
