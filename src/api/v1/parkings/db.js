@@ -3,7 +3,7 @@
 const db = require('../../../knex');
 const tableName = 'parkings';
 
-const columns = ['car_color', 'car_make', 'car_make_model', 'car_plate', 'coordinates'];
+const columns = ['car_color', 'car_front_photo_uri', 'car_make', 'car_make_model', 'car_plate', 'coordinates'];
 
 function list() {
   return db(tableName).select(columns)

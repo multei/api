@@ -21,34 +21,23 @@ debug('Configuring POST /v1/parkings')
 router.post(
   '/',
   multerUpload.single('carFrontPhoto'),
-  googleCloudStorage.sendUploadedFileToGCS,
+  googleCloudStorage.uploadFile,
   async (req, res, next) => {
+
     debug('Getting request body data')
     let data = req.body;
 
-    debug('Checking if an image was uploaded...')
-    const wasAnImageUploaded = req["file"] && req["file"].cloudStoragePublicUrl
-
-    if (!wasAnImageUploaded) {
-      debug('No image was uploaded because no image was detected')
-      return next(createError(400, 'No valid image was detected on request'))
-    }
-
-    data.imageUrl = req["file"].cloudStoragePublicUrl
-    debug('An image was uploaded. Image URL is %o', data.imageUrl)
+    data.car_front_photo_uri = req["file"].cloudStoragePublicUrl
 
     const successCallback = savedData => {
-      debug('Row saved at database with success: %o', savedData)
+      debug('Row saved at database with success: %o', data)
       res.status(200).json({
-        baseUrl: req.baseUrl,
-        data: savedData,
-        id: savedData.id,
-        uuid: savedData.uuid
+        data
       })
     }
 
     const errorCallback = error => {
-      console.error(error)
+      debug('Row not saved at database. Error: %o', error)
       next(createError(500, 'Internal server error'))
     }
 
