@@ -14,6 +14,7 @@ exports.up = (knex, Promise) => knex.raw('CREATE EXTENSION IF NOT EXISTS "uuid-o
       table.string('car_make_model');
       table.string('car_plate', 7);
       table.string('car_front_photo_uri', 2083);
+      table.json('car_openalpr_recognition_data').nullable();
       table.string('car_rear_photo_uri', 2083);
 
       table.specificType('coordinates', 'POINT').nullable();
