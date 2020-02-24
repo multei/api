@@ -22,7 +22,7 @@ module.exports = async (req, res, next) => {
     }
 
     debug('Success recognizing vehicle!');
-    req.vehicleData = result;
+    req.recognitionData = result;
 
   };
 

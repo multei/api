@@ -5,10 +5,19 @@ const debug = Debug('app:middlewares:saveOnParkings')
 async function saveOnParkings(req, res, next) {
 
   debug('Getting request body data')
-  let data = req.body;
 
-  data.car_front_photo_uri = req["file"].cloudStoragePublicUrl
-  data.car_plate = req["vehicleData"].results[0]["plate"]
+  const { file, recognitionData } = req;
+  const { plate, vehicle: { color, make, make_model } } = recognitionData.results[0];
+
+  const data = {
+    ...req.body,
+    car_front_photo_uri: file.cloudStoragePublicUrl,
+    car_color: color[0].name,
+    car_make: make[0].name,
+    car_make_model: make_model[0].name,
+    car_openalpr_recognition_data: recognitionData,
+    car_plate: plate,
+  }
 
   debug('Data to be persisted: %o', data)
 
