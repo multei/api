@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = require('../app');
+const app = require('../../app');
 
 describe('API', () => {
   it('should return 404 after GET /nonexistent endpoint', async () => {

@@ -13,16 +13,19 @@ app.disable('etag')
 app.disable('x-powered-by')
 app.use(logger('dev'));
 app.use(cookieParser());
-app.use(require('./middlewares/addHeaders'))
+app.use(require('./api/middlewares/addHeaders'))
 
-debug('Configuring routes...')
-app.use('/', require('./routes/index'));
+debug('Configuring routes for /...')
+app.use('/', require('./api/routes'));
+
+debug('Configuring routes for /v1/*...')
+app.use('/v1', require('./api/routes/v1'));
 
 debug('Configuring middleware for handling Not Found error...')
-app.use(require('./middlewares/handleNotFound'))
+app.use(require('./api/middlewares/handleNotFound'))
 
 debug('Configuring middleware for handling another server errors...')
-app.use(require('./middlewares/handleServerErrors'))
+app.use(require('./api/middlewares/handleServerErrors'))
 
 debug('After configure API on app.js')
 

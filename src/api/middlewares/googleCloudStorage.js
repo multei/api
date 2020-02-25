@@ -51,7 +51,7 @@ function getFileNameOnStorage(originalName) {
  * @param next
  * @return {*}
  */
-function uploadFile(req, res, next) {
+const uploadFile = (fileIndex) => (req, res, next) => {
 
   debug('Entered Google Cloud Storage middleware upload function...')
 
@@ -63,15 +63,18 @@ function uploadFile(req, res, next) {
   const CLOUD_BUCKET = process.env.CLOUD_BUCKET
   debug('Google Cloud bucket is %o', CLOUD_BUCKET)
 
-  if(!req.file) {
-    debug('Request file does not exist: %o', req.file)
+  if(!req.files[fileIndex]) {
+    debug('Request file does not exist on req.files[%o]', fileIndex)
     return next(createError(400, 'No file uploaded'))
   }
   debug(`Request file exists. Sending upload to Google Cloud Storage...`)
 
+  const requestFile = req.files[fileIndex][0]
+
   const bucket = getGoogleCloudStorageBucket(CLOUD_BUCKET)
 
-  const googleCloudStorageName = getFileNameOnStorage(req.file.originalname);
+  const googleCloudStorageName = getFileNameOnStorage(requestFile.originalname);
+  debug('Name of file on Google Cloud Storage will be %o', googleCloudStorageName)
 
   /**
    * Configure the file inside bucket
@@ -82,7 +85,7 @@ function uploadFile(req, res, next) {
 
   const options = {
     metadata: {
-      contentType: req.file.mimetype,
+      contentType: requestFile.mimetype,
     },
     resumable: false,
   };
@@ -94,7 +97,7 @@ function uploadFile(req, res, next) {
   blobStream.on('error', err => {
     debug('Error on stream. Setting cloudStorageError')
 
-    req.file.cloudStorageError = err
+    req.files[fileIndex].cloudStorageError = err
     debug('Moving to next middleware...')
 
     next(err)
@@ -103,21 +106,21 @@ function uploadFile(req, res, next) {
   blobStream.on('finish', async () => {
 
     debug('Stream finished')
-    req.file.cloudStorageObject = googleCloudStorageName
+    req.files[fileIndex].cloudStorageObject = googleCloudStorageName
 
     debug('Making file public...')
     await blob.makePublic()
 
-    req.file.cloudStoragePublicUrl = getPublicUrl(CLOUD_BUCKET, googleCloudStorageName)
-    debug('File public URL is %o', req.file.cloudStoragePublicUrl)
+    req.files[fileIndex].cloudStoragePublicUrl = getPublicUrl(CLOUD_BUCKET, googleCloudStorageName)
+    debug('File public URL is %o', req.files[fileIndex].cloudStoragePublicUrl)
 
     debug('Going to next middleware...')
     return next()
 
   })
 
-  debug('Finishing stream setting file buffer: %o', req.file.buffer)
-  blobStream.end(req.file.buffer)
+  debug('Finishing stream setting file buffer')
+  blobStream.end(requestFile.buffer)
 
   debug('Google Cloud Storage middleware finishing...')
 

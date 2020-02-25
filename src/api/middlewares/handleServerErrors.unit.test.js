@@ -1,6 +1,6 @@
-const mockError = require('../../__mocks__/mockError');
-const mockRequest = require('../../__mocks__/mockRequest');
-const mockResponse = require('../../__mocks__/mockResponse');
+const mockError = require('../../../__mocks__/mockError');
+const mockRequest = require('../../../__mocks__/mockRequest');
+const mockResponse = require('../../../__mocks__/mockResponse');
 const handleServerErrors = require('./handleServerErrors');
 
 describe('Server errors handler', () => {
