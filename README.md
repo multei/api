@@ -12,7 +12,9 @@ npm run develop:heroku
 
 ## Deploying to Heroku
 
-Make sure you have installed and logged in at Heroku.
+1. Make sure you have created a bucket with viewing permissions to allUsers and allAuthenticatedUsers on Google Cloud Platform;
+2. Make sure you have created a service account only (with key) for production with adequate permissions;
+3. Set a config var called `GCP_KEY_FILE` with a path to Google Cloud Platform key file;
 
 ```shell script
 npm install

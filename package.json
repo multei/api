@@ -16,7 +16,7 @@
     "debug": "DEBUG=app:*,openalpr:* nodemon --exec \"clear && ./bin/www\" --signal SIGTERM",
     "deploy:heroku": "git push heroku master",
     "develop:heroku": "nodemon --exec \"clear && heroku local\" --signal SIGTERM",
-    "heroku-postbuild": "knex migrate:latest",
+    "heroku-postbuild": "node gcp-setup.js && knex migrate:latest",
     "install:clean": "rm -rf node_modules && npm install",
     "start": "node ./bin/www",
     "stryker": "stryker run",
@@ -44,17 +44,18 @@
   ],
   "dependencies": {
     "@google-cloud/storage": "4.3.1",
+    "body-parser": "1.19.0",
     "cookie-parser": "1.4.4",
-    "dotenv": "8.2.0",
     "debug": "4.1.1",
+    "dotenv": "8.2.0",
     "express": "4.17.1",
+    "express-validator": "6.4.0",
+    "http-errors": "1.7.3",
     "knex": "0.20.10",
     "morgan": "1.9.1",
     "multer": "1.4.2",
     "openalpr": "0.3.2",
-    "pg": "7.18.2",
-    "http-errors": "1.7.3",
-    "body-parser": "1.19.0"
+    "pg": "7.18.2"
   },
   "devDependencies": {
     "@stryker-mutator/core": "2.5.0",
