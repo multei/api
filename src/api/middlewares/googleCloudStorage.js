@@ -1,5 +1,4 @@
-'use strict';
-const createError = require('http-errors')
+const ApiProblem = require('express-api-problem');
 const debug = require('debug')('app:middlewares:gcs')
 
 debug('At googleCloudStorage.js')
@@ -65,7 +64,7 @@ const uploadFile = (fileIndex) => (req, res, next) => {
 
   if(!req.files[fileIndex]) {
     debug('Request file does not exist on req.files[%o]', fileIndex)
-    return next(createError(400, 'No file uploaded'))
+    return next(new ApiProblem(400, 'No file uploaded', 'Please check if a valid file was uploaded', {fileIndex, files: req.files}))
   }
   debug(`Request file exists. Sending upload to Google Cloud Storage...`)
 
@@ -109,7 +108,7 @@ const uploadFile = (fileIndex) => (req, res, next) => {
     req.files[fileIndex].cloudStorageObject = googleCloudStorageName
 
     debug('Making file public...')
-    await blob.makePublic()
+    // await blob.makePublic()
 
     req.files[fileIndex].cloudStoragePublicUrl = getPublicUrl(CLOUD_BUCKET, googleCloudStorageName)
     debug('File public URL is %o', req.files[fileIndex].cloudStoragePublicUrl)

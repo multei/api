@@ -1,7 +1,9 @@
-const createError = require('http-errors');
+const ApiProblem = require('express-api-problem');
 
 function handleNotFound(req, res, next) {
-  next(createError(404, `Endpoint ${req.url} not found`));
+  next(new ApiProblem(404, `Endpoint not found`, `Please check the request URL`, {
+    url: req.url
+  }));
 }
 
 module.exports = handleNotFound;

@@ -27,6 +27,9 @@ app.use(require('./api/middlewares/handleNotFound'))
 debug('Configuring middleware for handling another server errors...')
 app.use(require('./api/middlewares/handleServerErrors'))
 
+debug('Configuring middleware for generating problem+json errors...')
+app.use(require('express-api-problem/middleware'))
+
 debug('After configure API on app.js')
 
 module.exports = app;

@@ -1,3 +1,4 @@
+const ApiProblem = require('express-api-problem');
 const debug = require('debug')('app:api:routes:index')
 const express = require('express');
 const router = express.Router();
@@ -10,8 +11,8 @@ router.get('/', (req, res) => {
 })
 
 debug('Configuring route for POST /')
-router.post('/', (req, res) => {
-  res.status(405).send('Can not POST to this endpoint')
+router.post('/', (req, res, next) => {
+  next(new ApiProblem(405, 'Can not POST to / endpoint', 'Please check the request URL. Given /'))
 })
 
 debug('End of routes/index.js file')

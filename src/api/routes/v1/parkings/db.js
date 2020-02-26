@@ -8,6 +8,7 @@ const columns = [
   'car_front_photo_uri',
   'car_make',
   'car_make_model',
+  'car_rear_photo_uri',
   'car_plate',
   'coordinates'
 ];
