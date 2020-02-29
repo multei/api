@@ -18,6 +18,8 @@ exports.up = (knex, Promise) => knex.raw('CREATE EXTENSION IF NOT EXISTS "uuid-o
       table.string('car_rear_photo_uri', 2083);
       table.json('car_rear_photo_recognition_data').nullable();
 
+      table.timestamps(true, true)
+
       table.specificType('coordinates', 'POINT').nullable();
 
       table.index('car_plate');
