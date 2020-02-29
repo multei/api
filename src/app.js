@@ -15,6 +15,9 @@ app.use(logger('dev'));
 app.use(cookieParser());
 app.use(require('./api/middlewares/addHeaders'))
 
+debug('Configuring CORS...')
+app.use(require('./api/middlewares/cors'))
+
 debug('Configuring routes for /...')
 app.use('/', require('./api/routes'));
 
