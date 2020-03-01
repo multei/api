@@ -3,7 +3,7 @@
 dictionaries:
   - pt_BR
   - en
-  
+
 excluded_files:
   - "vendor/**/*"
   - "node_modules/**/*"
@@ -18,6 +18,10 @@ excluded_files:
   - "yarn.lock"
   - "Gemfile.lock"
   - ".typo-ci.yml"
-  
-  excluded_words:
+
+excluded_words:
+  - dev
+  - testc
+  - testu
+  - testw
   - typoci
