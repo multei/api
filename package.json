@@ -13,6 +13,8 @@
   "homepage": "https://github.com/multei/api#readme",
   "private": false,
   "scripts": {
+    "ci": "npm run testc && npm run codecov",
+    "codecov": "codecov",
     "debug": "DEBUG=app:*,openalpr:* nodemon --exec \"clear && ./bin/www\" --signal SIGTERM",
     "deploy:heroku": "git push heroku master",
     "develop:heroku": "nodemon --exec \"clear && heroku local\" --signal SIGTERM",
@@ -21,7 +23,10 @@
     "start": "node ./bin/www",
     "stryker": "stryker run",
     "test": "jest",
-    "test:staged": "jest --bail --findRelatedTests --passWithNoTests $(git diff --name-only --diff-filter=ACM | grep \"js$\")"
+    "testc": "jest --coverage",
+    "testu": "jest -u",
+    "testw": "jest --watch",
+    "test:staged": "sh bin/test-staged.sh"
   },
   "author": "Multei!",
   "contributors": [
@@ -65,6 +70,7 @@
     "@stryker-mutator/javascript-mutator": "2.5.0",
     "@stryker-mutator/jest-runner": "2.5.0",
     "@types/express": "4.17.2",
+    "codecov": "^3.6.5",
     "eslint": "6.8.0",
     "husky": "4.2.3",
     "jest": "25.1.0",
@@ -77,7 +83,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "sh bin/test-staged.sh",
+      "pre-commit": "npm run test:staged",
       "pre-push": "npm test"
     }
   }
