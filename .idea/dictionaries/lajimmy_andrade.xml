@@ -5,6 +5,7 @@
       <w>axios</w>
       <w>dotenv</w>
       <w>gcloudignore</w>
+      <w>gemfile</w>
       <w>gitignore</w>
       <w>knex</w>
       <w>knexfile</w>
