@@ -21,6 +21,7 @@ excluded_files:
 
 excluded_words:
   - dev
+  - stryker-mutator
   - testc
   - testu
   - testw
