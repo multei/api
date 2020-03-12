@@ -21,9 +21,9 @@
     "heroku-postbuild": "node gcp-setup.js && knex migrate:latest",
     "install:clean": "rm -rf node_modules && npm install",
     "start": "node ./bin/www",
-    "stryker": "stryker run",
     "test": "jest",
     "testc": "jest --coverage",
+    "testm": "stryker run",
     "testu": "jest -u",
     "testw": "jest --watch",
     "test:staged": "sh bin/test-staged.sh"
