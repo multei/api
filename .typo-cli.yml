@@ -23,6 +23,7 @@ excluded_words:
   - dev
   - stryker-mutator
   - testc
+  - testm
   - testu
   - testw
   - typoci
