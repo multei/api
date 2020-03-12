@@ -2,6 +2,7 @@
   "extends": [
     "config:base"
   ],
+  "assignees": ["jimmyandrade"],
   "automerge": true,
   "enabled": true,
   "labels": ["dependencies", "renovate"],
