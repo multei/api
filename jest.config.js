@@ -2,7 +2,7 @@ module.exports = {
   collectCoverage: true,
   coverageDirectory: '<rootDir>/coverage',
   coveragePathIgnorePatterns: [
-    '/node_modules/'
+    '/.circleci/', '/.github/', '/.stryker-tmp/', '/node_modules/', '/reports/'
   ],
   errorOnDeprecated: true,
   rootDir: './',
