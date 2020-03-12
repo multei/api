@@ -21,6 +21,7 @@ excluded_files:
 
 excluded_words:
   - dev
+  - openalpr
   - stryker-mutator
   - testc
   - testm
