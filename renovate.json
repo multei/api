@@ -12,6 +12,7 @@
       "automerge": true
     }
   ],
+  "reviewers": ["jimmyandrade"],
   "semanticCommits": true,
   "unicodeEmoji": true,
   "updateLockFiles": true
