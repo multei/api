@@ -31,6 +31,7 @@ debug('Configuring middleware for handling another server errors...')
 app.use(require('./api/middlewares/handleServerErrors'))
 
 debug('Configuring middleware for generating problem+json errors...')
+// @todo Update app code to work with express-api-problem 2.x
 app.use(require('express-api-problem/middleware'))
 
 debug('After configure API on app.js')
