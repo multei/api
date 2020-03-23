@@ -58,7 +58,7 @@
     "express-api-problem": "1.2.6",
     "express-validator": "6.4.0",
     "http-errors": "1.7.3",
-    "knex": "0.20.12",
+    "knex": "0.20.13",
     "morgan": "1.10.0",
     "multer": "1.4.2",
     "openalpr": "0.3.3",
