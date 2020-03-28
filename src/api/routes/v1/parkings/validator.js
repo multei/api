@@ -1,4 +1,4 @@
-const ApiProblem = require('express-api-problem');
+const { ApiProblem } = require('express-api-problem');
 
 module.exports = (req, res, next) => {
   if(typeof req.files["car_front_photo"] === "undefined") {

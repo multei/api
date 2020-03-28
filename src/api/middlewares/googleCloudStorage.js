@@ -1,4 +1,4 @@
-const ApiProblem = require('express-api-problem');
+const { ApiProblem } = require('express-api-problem');
 const debug = require('debug')('app:middlewares:gcs')
 
 debug('At googleCloudStorage.js')
