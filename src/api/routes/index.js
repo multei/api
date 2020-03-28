@@ -1,4 +1,4 @@
-const ApiProblem = require('express-api-problem');
+const { ApiProblem } = require('express-api-problem');
 const debug = require('debug')('app:api:routes:index')
 const express = require('express');
 const router = express.Router();

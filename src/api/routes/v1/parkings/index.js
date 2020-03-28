@@ -1,6 +1,5 @@
-const ApiProblem = require('express-api-problem');
+const { ApiProblem } = require('express-api-problem');
 const bodyParser = require('body-parser')
-const createError = require('http-errors')
 const Debug = require('debug')
 const express = require('express')
 const openALPR = require('openalpr/dist/express-middleware')

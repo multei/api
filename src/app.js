@@ -3,6 +3,7 @@ const debug = require('debug')('app')
 const dotenv = require('dotenv')
 const express = require('express');
 const logger = require('morgan');
+const { ExpressMiddleware } = require('express-api-problem')
 
 debug('On app.js file')
 dotenv.config()
@@ -31,8 +32,7 @@ debug('Configuring middleware for handling another server errors...')
 app.use(require('./api/middlewares/handleServerErrors'))
 
 debug('Configuring middleware for generating problem+json errors...')
-// @todo Update app code to work with express-api-problem 2.x
-app.use(require('express-api-problem/middleware'))
+app.use(ExpressMiddleware())
 
 debug('After configure API on app.js')
 
