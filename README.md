@@ -1,6 +1,12 @@
 # Multei! API
 [![Travis Build Status](https://travis-ci.org/multei/api.svg?branch=master)](https://travis-ci.org/multei/api)
 
+## Before everything...
+
+We are working to follow [Node.js Best Practices](https://github.com/goldbergyoni/nodebestpractices).
+
+For more information about Node.js on Heroku, see [Best Practices for Node.js Development](https://devcenter.heroku.com/articles/node-best-practices).
+
 ## Running locally
 
 Make sure you have [Node.js](http://nodejs.org/) and Heroku installed.
@@ -42,8 +48,3 @@ So you need to:
     **Never commit this file!**
 12. At local development environment, on your .env file, set `GOOGLE_APPLICATION_CREDENTIALS` to `config/multei-{key}.json`, where `multei-{key}.json` is the actual filename;
 13. If your application was already running, restart it.
-
-## New at Node.js?
-
-For more information about Node.js (used in this project),
-see [Best Practices for Node.js Development](https://devcenter.heroku.com/articles/node-best-practices).
