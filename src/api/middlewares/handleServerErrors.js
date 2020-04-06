@@ -2,7 +2,6 @@ const Debug = require('debug')
 const debug = Debug('app:api:middlewares:handleServerErrors')
 
 function handleServerErrors(err, req, res) {
-  debug('Setting content-type to application/problem+json')
   let status = 500;
   if(typeof res.locals !== 'undefined') {
     debug('Setting locals data for message and error')
