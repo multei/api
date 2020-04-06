@@ -25,8 +25,8 @@ router.get('/', bodyParser.json(), async function (req, res, next) {
     res.status(200).json({status: 'success', data: {parkings: data}});
   }
   const handleError = error => {
-    debug('Error on listing parkings')
-    next(new ApiProblem(500, 'Error when trying to return parkings list', 'It is an internal API issue', error))
+    debug('Error on listing parkings: %o', error)
+    next(new ApiProblem({ status: 500, title: 'Error when trying to return parkings list', detail: 'It is an internal API issue' }))
   }
 
   debug('Listing parkings...')
@@ -47,7 +47,7 @@ router.get('/:car_plate', async function (req, res, next) {
     debug('Success on listing data')
 
     if(data.length === 0) {
-      return next(new ApiProblem(404, 'No parkings found with this plate', 'Please check if car_plate is correct', {car_plate}));
+      return next(new ApiProblem({ status: 404, title: 'No parkings found with this plate', detail: 'Please check if car_plate is correct', additional: {car_plate}}));
     }
 
     res.status(200).json({status: 'success', data: {parkings: data}});
@@ -55,7 +55,7 @@ router.get('/:car_plate', async function (req, res, next) {
 
   const handleError = error => {
     debug('Error: %o', error)
-    return next(new ApiProblem(500, 'Can not retrieve parkings', 'This is an internal API error', error))
+    return next(new ApiProblem({ status: 500, title: 'Can not retrieve parkings', detail: 'This is an internal API error' }))
   };
 
   debug('Reading from database, looking for car plate %o', car_plate)
@@ -106,8 +106,8 @@ router.post(
     }
 
     const handleError = error => {
-      debug('Row not saved at database. Error: %o', error)
-      next(new ApiProblem(500, 'Error when trying to save data', 'It is an internal server error', error))
+      debug('Row not saved at database. Error: %O', error)
+      next(new ApiProblem({ status: 500, title: 'Error when trying to save data', detail: 'It is an internal server error'}))
     }
 
     debug('Saving on database...')
@@ -122,7 +122,7 @@ router.post(
  * Can not delete a illegal parking
  */
 router.delete('/:param', bodyParser.json(), async (req, res, next) => {
-  next(new ApiProblem(405, 'Deleting parking is not allowed'))
+  next(new ApiProblem({ status: 405, title: 'Deleting parking is not allowed' }))
 })
 
 module.exports = router

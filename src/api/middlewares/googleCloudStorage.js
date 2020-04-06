@@ -64,7 +64,7 @@ const uploadFile = (fileIndex) => (req, res, next) => {
 
   if(!req.files[fileIndex]) {
     debug('Request file does not exist on req.files[%o]', fileIndex)
-    return next(new ApiProblem(400, 'No file uploaded', 'Please check if a valid file was uploaded', {fileIndex, files: req.files}))
+    return next(new ApiProblem({ status: 400, title: 'No file uploaded', detail: 'Please check if a valid file was uploaded', additional: {fileIndex, files: req.files}}))
   }
   debug(`Request file exists. Sending upload to Google Cloud Storage...`)
 

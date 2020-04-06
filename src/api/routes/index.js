@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 
 debug('Configuring route for POST /')
 router.post('/', (req, res, next) => {
-  next(new ApiProblem(405, 'Can not POST to / endpoint', 'Please check the request URL. Given /'))
+  next(new ApiProblem({ status: 405, title: 'Can not POST to / endpoint', detail: 'Please check the request URL. Given /' }))
 })
 
 debug('End of routes/index.js file')
