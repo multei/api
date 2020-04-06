@@ -7,6 +7,10 @@ We are working to follow [Node.js Best Practices](https://github.com/goldbergyon
 
 For more information about Node.js on Heroku, see [Best Practices for Node.js Development](https://devcenter.heroku.com/articles/node-best-practices).
 
+## Libraries we use
+
+* [express-api-problem](https://www.npmjs.com/package/express-api-problem) to handle API problems with ease.
+
 ## Running locally
 
 Make sure you have [Node.js](http://nodejs.org/) and Heroku installed.
