@@ -9,16 +9,16 @@ For more information about Node.js on Heroku, see [Best Practices for Node.js De
 
 ## Tech stack
 
-## Languages, libraries and frameworks
+### Languages, libraries and frameworks
 
 * [express-api-problem](https://www.npmjs.com/package/express-api-problem) to handle API problems with ease.
 * JavaScript;
 
-## Platforms
+### Platforms
 
 * [Google Cloud Platform](https://console.cloud.google.com)
 
-## Tools
+### Tools
 
 * [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
 
