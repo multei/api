@@ -7,9 +7,20 @@ We are working to follow [Node.js Best Practices](https://github.com/goldbergyon
 
 For more information about Node.js on Heroku, see [Best Practices for Node.js Development](https://devcenter.heroku.com/articles/node-best-practices).
 
-## Libraries we use
+## Tech stack
+
+## Languages, libraries and frameworks
 
 * [express-api-problem](https://www.npmjs.com/package/express-api-problem) to handle API problems with ease.
+* JavaScript;
+
+## Platforms
+
+* [Google Cloud Platform](https://console.cloud.google.com)
+
+## Tools
+
+* [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
 
 ## Running locally
 
