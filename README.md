@@ -31,6 +31,12 @@ npm install
 npm run develop:heroku
 ```
 
+If you are running for the first time, run:
+
+```shell script
+knex seed:run
+```
+
 ## Deploying to Heroku
 
 1. Make sure you have created a bucket with viewing permissions to allUsers and allAuthenticatedUsers on Google Cloud Platform;
