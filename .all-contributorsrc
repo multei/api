@@ -6,6 +6,17 @@
   "commit": false,
   "contributors": [
     {
+      "login": "jimmyandrade",
+      "name": "Jimmy Andrade",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/2307245?v=4",
+      "profile": "http://jimmyandrade.com",
+      "contributions": [
+        "bug",
+        "projectManagement",
+        "review"
+      ]
+    },
+    {
       "login": "tuliooassis",
       "name": "Túlio Assis",
       "avatar_url": "https://avatars1.githubusercontent.com/u/17442350?v=4",
