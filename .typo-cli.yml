@@ -20,9 +20,13 @@ excluded_files:
   - ".typo-ci.yml"
 
 excluded_words:
+  - Andrade
+  - contributorsrc
   - dev
+  - jimmyandrade
   - openalpr
   - parkings
+  - projectManagement-jimmyandrade
   - stryker-mutator
   - testc
   - testm
