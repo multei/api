@@ -15,7 +15,8 @@
         "projectManagement",
         "review",
         "code",
-        "doc"
+        "doc",
+        "example"
       ]
     },
     {
