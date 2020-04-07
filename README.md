@@ -28,15 +28,21 @@ For more information about Node.js on Heroku, see [Best Practices for Node.js De
 ## Running locally
 
 ### Database
-Make sure you have [Postgres](https://postgresapp.com/) and [Knex CLI](http://knexjs.org/#Migrations-CLI) installed.
 
-1. Make sure you have created the Multei database on Postgres
-2. Run all migrations
-3. Run seed files
-
+1. Make sure you have [Postgres](https://postgresapp.com/) installed.
+2. Run `npm install` to install [Knex CLI](http://knexjs.org/#Migrations-CLI)
+3. Make sure you have created the Multei database on Postgres. To create, you can use [psql](https://www.postgresql.org/docs/9.3/app-psql.html) to run:
 ```shell script
-psql -U postgres -h localhost -c "create database {DATABASE_NAME}"
+psql -U postgres -h localhost -c "create database multei"
+```
+
+4. Run all migrations
+```shell script
 knex migrate:latest
+```
+
+5. Run seed files
+```shell script
 knex seed:run
 ```
 
