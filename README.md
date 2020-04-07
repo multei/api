@@ -31,8 +31,8 @@ For more information about Node.js on Heroku, see [Best Practices for Node.js De
 Make sure you have [Postgres](https://postgresapp.com/) and [Knex CLI](http://knexjs.org/#Migrations-CLI) installed.
 
 1. Make sure you have created the Multei database on Postgres
-1. Run all migrations
-2. Run seed files
+2. Run all migrations
+3. Run seed files
 
 ```shell script
 psql -U postgres -h localhost -c "create database {DATABASE_NAME}"
