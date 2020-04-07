@@ -14,16 +14,20 @@ For more information about Node.js on Heroku, see [Best Practices for Node.js De
 
 ### Languages, libraries and frameworks
 
-* [express-api-problem](https://www.npmjs.com/package/express-api-problem) to handle API problems with ease.
-* JavaScript;
+- Express;
+- [express-api-problem](https://www.npmjs.com/package/express-api-problem) to handle API problems with ease.
+- Google Cloud Storage JavaScript SDK;
+- JavaScript;
+- Multer;
 
 ### Platforms
 
-* [Google Cloud Platform](https://console.cloud.google.com)
+- [Google Cloud Platform](https://www.thoughtworks.com/pt/radar/platforms/google-cloud-platform)
+- [Node.js](https://www.thoughtworks.com/pt/radar/platforms/node-js)
 
 ### Tools
 
-* [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+- [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
 
 ## Running locally
 
