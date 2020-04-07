@@ -1,6 +1,6 @@
 # Multei! API
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 [![Travis Build Status](https://travis-ci.org/multei/api.svg?branch=master)](https://travis-ci.org/multei/api)
 
@@ -82,7 +82,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="http://jimmyandrade.com"><img src="https://avatars3.githubusercontent.com/u/2307245?v=4" width="100px;" alt=""/><br /><sub><b>Jimmy Andrade</b></sub></a><br /><a href="https://github.com/multei/api/issues?q=author%3Ajimmyandrade" title="Bug reports">🐛</a> <a href="#projectManagement-jimmyandrade" title="Project Management">📆</a> <a href="https://github.com/multei/api/pulls?q=is%3Apr+reviewed-by%3Ajimmyandrade" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="http://jimmyandrade.com"><img src="https://avatars3.githubusercontent.com/u/2307245?v=4" width="100px;" alt=""/><br /><sub><b>Jimmy Andrade</b></sub></a><br /><a href="https://github.com/multei/api/issues?q=author%3Ajimmyandrade" title="Bug reports">🐛</a> <a href="#projectManagement-jimmyandrade" title="Project Management">📆</a> <a href="https://github.com/multei/api/pulls?q=is%3Apr+reviewed-by%3Ajimmyandrade" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/multei/api/commits?author=jimmyandrade" title="Code">💻</a></td>
     <td align="center"><a href="http://tuliooassis.github.io"><img src="https://avatars1.githubusercontent.com/u/17442350?v=4" width="100px;" alt=""/><br /><sub><b>Túlio Assis</b></sub></a><br /><a href="https://github.com/multei/api/commits?author=tuliooassis" title="Code">💻</a></td>
   </tr>
 </table>
