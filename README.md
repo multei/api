@@ -34,6 +34,10 @@ npm install
 npm run develop:heroku
 ```
 
+The port exposed by the API depends on the start command executed
+* Port `3000` if you run `npm start` or `npm run debug`
+* Port `5000` if you run `npm run develop:heroku`
+
 If you are running for the first time, run:
 
 ```shell script
