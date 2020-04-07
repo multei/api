@@ -27,6 +27,20 @@ For more information about Node.js on Heroku, see [Best Practices for Node.js De
 
 ## Running locally
 
+### Database
+Make sure you have [Postgres](https://postgresapp.com/) and [Knex CLI](http://knexjs.org/#Migrations-CLI) installed.
+
+1. Make sure you have created the Multei database on Postgres
+1. Run all migrations
+2. Run seed files
+
+```shell script
+psql -U postgres -h localhost -c "create database {DATABASE_NAME}"
+knex migrate:latest
+knex seed:run
+```
+
+### API
 Make sure you have [Node.js](http://nodejs.org/) and Heroku installed.
 
 ```shell script
@@ -37,12 +51,6 @@ npm run develop:heroku
 The port exposed by the API depends on the start command executed
 * Port `3000` if you run `npm start` or `npm run debug`
 * Port `5000` if you run `npm run develop:heroku`
-
-If you are running for the first time, run:
-
-```shell script
-knex seed:run
-```
 
 ## Deploying to Heroku
 
