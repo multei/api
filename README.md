@@ -40,6 +40,9 @@ knex migrate:latest
 knex seed:run
 ```
 
+### Environment Variables
+Make sure you have created your own `.env` file based on `.env.example` with your credentials.
+
 ### API
 Make sure you have [Node.js](http://nodejs.org/) and Heroku installed.
 
