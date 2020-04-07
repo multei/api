@@ -21,6 +21,7 @@ excluded_files:
 
 excluded_words:
   - Andrade
+  - Assis
   - contributorsrc
   - dev
   - jimmyandrade
@@ -32,4 +33,5 @@ excluded_words:
   - testm
   - testu
   - testw
+  - Túlio
   - typoci
