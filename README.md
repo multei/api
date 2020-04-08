@@ -54,21 +54,25 @@ Make sure you have installed the following dependencies:
 
 ### Provide a local database
 
-1. Run `npm install` to install [Knex CLI](http://knexjs.org/#Migrations-CLI)
+1. Install [Knex CLI](http://knexjs.org/#Migrations-CLI) (and all the other dependencies);
+   ```shell script
+   npm install
+   ```
+
 2. Make sure you have created the Multei database on Postgres. To create, you can use [psql](https://www.postgresql.org/docs/9.3/app-psql.html) to run:
-```shell script
-psql -U postgres -h localhost -c "create database multei"
-```
+   ```shell script
+   psql -U postgres -h localhost -c "create database multei"
+   ```
 
 3. Run all migrations
-```shell script
-knex migrate:latest
-```
+   ```shell script
+   knex migrate:latest
+   ```
 
 4. Run seed files
-```shell script
-knex seed:run
-```
+   ```shell script
+   knex seed:run
+   ```
 
 ### Define the local `.env` variables
 Make sure you have created your own `.env` file based on `.env.example` with your credentials.
@@ -76,8 +80,7 @@ Make sure you have created your own `.env` file based on `.env.example` with you
 ### Start developing
 
 ```shell script
-npm install
-npm run develop:heroku
+npm install && npm run develop:heroku
 ```
 
 The port exposed by the API depends on the start command executed
@@ -91,7 +94,6 @@ The port exposed by the API depends on the start command executed
 3. Set a config var called `GCP_KEY_FILE` with a path to Google Cloud Platform key file;
 
 ```shell script
-npm install
 npm run deploy:heroku
 ```
 
