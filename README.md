@@ -23,7 +23,7 @@ For more information about Node.js on Heroku, see [Best Practices for Node.js De
 
 ### Check our Tech Stack
 
-We have [our own Tech Radar](https://radar.thoughtworks.com/?sheetId=https%3A%2F%2Fraw.githubusercontent.com%2Fmultei%2F.github%2Fmaster%2FTECHRADAR.csv)
+We have [our own Tech Radar](https://radar.thoughtworks.com/?sheetId=https://raw.githubusercontent.com/multei/.github/master/Multei!%20Tech%20Radar.csv)
 
 #### Languages, libraries and frameworks
 
