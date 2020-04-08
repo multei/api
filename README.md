@@ -6,13 +6,26 @@
 
 ## Before everything...
 
+### Check out [project board](https://github.com/orgs/multei/projects/1)
+
+You can find it at https://github.com/orgs/multei/projects/1
+
+### Check our guidelines & code of conduct
+
+- [Contributing Guidelines](https://github.com/multei/.github/blob/master/CONTRIBUTING.md);
+- [Code of Conduct](https://github.com/multei/.github/blob/master/CODE_OF_CONDUCT.md);
+
+### Check the best practices
+
 We are working to follow [Node.js Best Practices](https://github.com/goldbergyoni/nodebestpractices).
 
 For more information about Node.js on Heroku, see [Best Practices for Node.js Development](https://devcenter.heroku.com/articles/node-best-practices).
 
-## Tech stack
+### Check our Tech Stack
 
-### Languages, libraries and frameworks
+We have [our own Tech Radar](https://radar.thoughtworks.com/?sheetId=https%3A%2F%2Fraw.githubusercontent.com%2Fmultei%2F.github%2Fmaster%2FTECHRADAR.csv)
+
+#### Languages, libraries and frameworks
 
 - Express;
 - [express-api-problem](https://www.npmjs.com/package/express-api-problem) to handle API problems with ease.
@@ -20,41 +33,47 @@ For more information about Node.js on Heroku, see [Best Practices for Node.js De
 - JavaScript;
 - Multer;
 
-### Platforms
+#### Platforms
 
 - [Google Cloud Platform](https://www.thoughtworks.com/pt/radar/platforms/google-cloud-platform)
 - [Node.js](https://www.thoughtworks.com/pt/radar/platforms/node-js)
 
-### Tools
+#### Tools
 
 - [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
 
-## Running locally
+## Configure your local dev environment
 
-### Database
+### Install these requirements
 
-1. Make sure you have [Postgres](https://postgresapp.com/) installed.
-2. Run `npm install` to install [Knex CLI](http://knexjs.org/#Migrations-CLI)
-3. Make sure you have created the Multei database on Postgres. To create, you can use [psql](https://www.postgresql.org/docs/9.3/app-psql.html) to run:
+Make sure you have installed the following dependencies:
+
+- [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli);
+- [Node.js](http://nodejs.org/);
+- [Postgres](https://postgresapp.com/).
+
+### Provide a local database
+
+1. Run `npm install` to install [Knex CLI](http://knexjs.org/#Migrations-CLI)
+2. Make sure you have created the Multei database on Postgres. To create, you can use [psql](https://www.postgresql.org/docs/9.3/app-psql.html) to run:
 ```shell script
 psql -U postgres -h localhost -c "create database multei"
 ```
 
-4. Run all migrations
+3. Run all migrations
 ```shell script
 knex migrate:latest
 ```
 
-5. Run seed files
+4. Run seed files
 ```shell script
 knex seed:run
 ```
 
-### Environment Variables
+### Define the local `.env` variables
 Make sure you have created your own `.env` file based on `.env.example` with your credentials.
 
-### API
-Make sure you have [Node.js](http://nodejs.org/) and Heroku installed.
+### Start developing
 
 ```shell script
 npm install
