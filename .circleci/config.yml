@@ -1,6 +1,10 @@
-version: 2.1
 orbs:
   node: circleci/node@2.0.1
+workflows:
+  "Test":
+    jobs:
+      - test
+version: 2.1
 jobs:
   test:
     executor:
@@ -8,9 +12,6 @@ jobs:
       tag: "13.2"
     steps:
       - checkout
-      - run: ci
-      - run: npm run ci
-workflows:
-    "Test":
-      jobs:
-        - test
+      - run: npm ci
+      - run: npm run bootstrap
+      - run: npm test
