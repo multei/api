@@ -13,5 +13,4 @@ jobs:
     steps:
       - checkout
       - run: npm ci
-      - run: npm run bootstrap
       - run: npm test
