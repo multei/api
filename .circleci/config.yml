@@ -1,17 +1,16 @@
-version: 2.1
 orbs:
-  node: circleci/node@1.1.6
+  node: circleci/node@2.0.1
+workflows:
+  "Test":
+    jobs:
+      - test
+version: 2.1
 jobs:
-  build-and-test:
+  test:
     executor:
       name: node/default
+      tag: "13.2"
     steps:
       - checkout
-      - node/with-cache:
-          steps:
-            - run: npm ci
-            - run: npm run ci
-workflows:
-    build-and-test:
-      jobs:
-        - build-and-test
+      - run: npm ci
+      - run: npm test
