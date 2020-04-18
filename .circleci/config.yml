@@ -1,5 +1,5 @@
 orbs:
-  node: circleci/node@2.0.1
+  node: circleci/node@2.0.2
 workflows:
   "Test":
     jobs:
