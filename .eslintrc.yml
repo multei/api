@@ -1,12 +1,15 @@
 root: true
 
 env:
-  browser: true
+  browser: false
   commonjs: true
   es6: true
   jest: node
   node: true
-extends: 'eslint:recommended'
+extends:
+  - 'eslint:recommended'
+  - 'plugin:node/recommended'
+  - 'plugin:security/recommended'
 globals:
   Atomics: readonly
   SharedArrayBuffer: readonly
@@ -15,15 +18,8 @@ parserOptions:
 rules:
   eol-last: error
   eqeqeq: [error, allow-null]
-  indent: [error, 2, { SwitchCase: 1 }]
   linebreak-style:
     - error
     - unix
   no-trailing-spaces: error
   no-unused-vars: [error, { vars: all, args: none, ignoreRestSiblings: true }]
-  quotes:
-    - error
-    - single
-  semi:
-    - error
-    - always
