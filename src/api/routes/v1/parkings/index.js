@@ -70,7 +70,6 @@ router.post(
   '/',
   [
     multerUpload.fields([{name: 'car_front_photo', maxCount: 1}, {name: 'car_rear_photo', maxCount: 1}]),
-    require('./validator'),
     openALPR('car_front_photo', process.env.OPENALPR_SECRET_KEY),
     openALPR('car_rear_photo', process.env.OPENALPR_SECRET_KEY),
     googleCloudStorage.uploadFile('car_front_photo'),
