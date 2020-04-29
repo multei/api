@@ -2,4 +2,5 @@ build/
 coverage
 docs/
 **/node_modules
+reports/
 src/**/doc/*
