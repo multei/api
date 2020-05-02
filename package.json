@@ -75,7 +75,7 @@
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-security": "1.4.0",
     "husky": "4.2.5",
-    "jest": "25.5.3",
+    "jest": "25.5.4",
     "nodemon": "2.0.3",
     "supertest": "4.0.2"
   },
