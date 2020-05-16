@@ -65,10 +65,10 @@
     "pg": "8.1.0"
   },
   "devDependencies": {
-    "@stryker-mutator/core": "3.1.0",
+    "@stryker-mutator/core": "3.2.3",
     "@stryker-mutator/html-reporter": "3.1.0",
-    "@stryker-mutator/javascript-mutator": "3.1.0",
-    "@stryker-mutator/jest-runner": "3.1.0",
+    "@stryker-mutator/javascript-mutator": "3.2.3",
+    "@stryker-mutator/jest-runner": "3.2.3",
     "@types/express": "4.17.6",
     "codecov": "3.6.5",
     "eslint": "7.0.0",
