@@ -5,6 +5,11 @@ const router = express.Router();
 
 debug('On routes/index.js file')
 
+debug('Configuring health check endpoint')
+router.get('/health-check', (req, res) => {
+  res.status(200).send()
+})
+
 debug('Configuring route for GET /')
 router.get('/', (req, res) => {
   res.status(204).send()
