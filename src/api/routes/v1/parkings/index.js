@@ -69,16 +69,14 @@ router.get('/:car_plate', async function (req, res, next) {
 router.post(
   '/',
   [
-    multerUpload.fields([{name: 'car_front_photo', maxCount: 1}, {name: 'car_rear_photo', maxCount: 1}]),
+    multerUpload.fields([{name: 'car_front_photo', maxCount: 1}]),
     openALPR('car_front_photo', process.env.OPENALPR_SECRET_KEY),
-    openALPR('car_rear_photo', process.env.OPENALPR_SECRET_KEY),
     googleCloudStorage.uploadFile('car_front_photo'),
-    googleCloudStorage.uploadFile('car_rear_photo')
   ],
   async function(req, res, next) {
     debug('Getting request body data')
     const { files, recognitionData } = req;
-    const { car_front_photo, car_rear_photo } = recognitionData;
+    const { car_front_photo } = recognitionData;
     const { plate, vehicle: { color, make, make_model } } = recognitionData['car_front_photo'].results[0];
 
     const data = {
@@ -89,8 +87,6 @@ router.post(
       car_make: make[0].name,
       car_make_model: make_model[0].name,
       car_plate: plate,
-      car_rear_photo_uri: files['car_rear_photo'].cloudStoragePublicUrl,
-      car_rear_photo_recognition_data: car_rear_photo,
     }
     debug('Data to be persisted: %o', data)
 
