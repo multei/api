@@ -4,6 +4,8 @@ const dotenv = require('dotenv')
 const express = require('express');
 const logger = require('morgan');
 
+dotenv.config()
+
 const { ExpressMiddleware } = require('express-api-problem')
 const expressMiddleware = ExpressMiddleware()
 
@@ -16,7 +18,6 @@ const apiRootRouteHandler = require('./api/routes')
 const v1RouteHandler = require('./api/routes/v1')
 
 debug('On app.js file')
-dotenv.config()
 
 const app = express();
 
