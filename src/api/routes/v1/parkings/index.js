@@ -95,6 +95,7 @@ router.post(
       res.status(200).json({
         status: 'success',
         data: {
+          uuid: response[0],
           parkings: data
         }
       })

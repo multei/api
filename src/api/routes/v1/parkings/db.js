@@ -24,7 +24,7 @@ function read(whereObject) {
 }
 
 function create(data) {
-  return db(tableName).insert(data)
+  return db(tableName).insert(data, 'uuid')
 }
 
 module.exports = {
