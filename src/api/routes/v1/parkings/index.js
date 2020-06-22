@@ -70,7 +70,7 @@ router.post(
   '/',
   [
     multerUpload.fields([{name: 'car_front_photo', maxCount: 1}]),
-    openALPR('car_front_photo', process.env.OPENALPR_SECRET_KEY),
+    openALPR('car_front_photo'),
     googleCloudStorage.uploadFile('car_front_photo'),
   ],
   async function(req, res, next) {
