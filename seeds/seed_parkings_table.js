@@ -14,7 +14,8 @@ exports.seed = function (knex) {
           car_plate: 'ABC1234',
           car_front_photo_uri: 'https://storage.googleapis.com/multei-photos-dev/1582751206378kia-cerato.jpg',
           car_rear_photo_uri: 'https://storage.googleapis.com/multei-photos-dev/1582751208271example-image.jpg',
-          coordinates: '-19.9209351,-43.921136'
+          coordinates: '-19.9209351,-43.921136',
+          completed_at: knex.fn.now(),
         }
       ]);
     });

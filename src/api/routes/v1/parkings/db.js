@@ -12,7 +12,8 @@ const columns = [
   'car_rear_photo_uri',
   'car_plate',
   'coordinates',
-  'created_at'
+  'created_at',
+  'completed_at'
 ];
 
 function list() {
