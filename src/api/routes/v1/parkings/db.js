@@ -28,8 +28,14 @@ function create(data) {
   return db(tableName).insert(data, 'uuid')
 }
 
+function update(whereObject, updateObject, completed) {
+  if (completed) updateObject['completed_at'] =  db.fn.now()
+  return db(tableName).where(whereObject).update(updateObject)
+}
+
 module.exports = {
   create,
   list,
-  read
+  read,
+  update
 }
