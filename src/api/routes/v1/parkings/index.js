@@ -127,7 +127,7 @@ router.patch('/', bodyParser.json(), async (req, res, next) => {
 
     if (completed_at){
       debug('Parking report completed before')
-      next(new ApiProblem({ status: 405, title: 'Parking report already completed' }))
+      next(new ApiProblem({ status: 405, title: 'Parking report is already completed' }))
     }
     else {
       debug('Updating parking report with coordinates %d', coordinates)
