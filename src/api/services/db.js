@@ -1,6 +1,6 @@
 'use strict'
 
-const db = require('../../../../lib/knex');
+const db = require('../../lib/knex');
 const tableName = 'parkings';
 
 const columns = [

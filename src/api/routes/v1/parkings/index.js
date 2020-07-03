@@ -4,7 +4,7 @@ const Debug = require('debug')
 const express = require('express')
 const openALPR = require('openalpr/dist/express-middleware')
 const router = express.Router()
-const { create, list, read, update } = require('./db')
+const { create, list, read, update } = require('../../../services/db')
 
 const googleCloudStorage = require('../../../middlewares/googleCloudStorage')
 const multerUpload = require('../../../middlewares/multerUpload')

@@ -2,7 +2,7 @@
 const request = require('supertest');
 const app = require('../../../../app')
 
-jest.mock('./db')
+jest.mock('../../../services/db')
 
 describe('/v1/parkings', function () {
   it('should return not allowed', async () => {
