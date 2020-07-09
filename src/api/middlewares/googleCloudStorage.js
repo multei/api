@@ -1,15 +1,10 @@
 const { ApiProblem } = require('express-api-problem');
 const debug = require('debug')('app:middlewares:gcs')
+const {Storage} = require('@google-cloud/storage')
 
 debug('At googleCloudStorage.js')
 
 function getGoogleCloudStorageBucket(bucketName) {
-
-  /**
-   * Imports the Google Cloud client library
-   */
-  const {Storage} = require('@google-cloud/storage')
-
   /**
    * Instantiates a client
    *
@@ -94,7 +89,7 @@ const uploadFile = (fileIndex) => (req, res, next) => {
   debug('Initializing write stream...')
 
   blobStream.on('error', err => {
-    debug('Error on stream. Setting cloudStorageError')
+    debug('Error on stream. Setting cloudStorageError: %o', err)
 
     req.files[fileIndex].cloudStorageError = err
     debug('Moving to next middleware...')
