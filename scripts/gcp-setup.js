@@ -3,7 +3,7 @@ const fs = require('fs')
 
 dotenv.config()
 
-const path = process.env.GCP_KEY_FILE;
+const path = process.env.GOOGLE_APPLICATION_CREDENTIALS;
 const data = process.env.GCP_CRED;
 const callback = (err) => console.log(err);
 
