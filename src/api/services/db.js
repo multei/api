@@ -20,8 +20,12 @@ function list() {
   return db(tableName).select(columns)
 }
 
-function read(whereObject) {
-  return db(tableName).select(columns).where(whereObject)
+function read(whereObject, whereNotObject) {
+  if(whereNotObject)
+    return db(tableName).select(columns).where(whereObject).whereNot(whereNotObject)
+  else
+    return db(tableName).select(columns).where(whereObject)
+
 }
 
 function create(data) {

@@ -59,7 +59,7 @@ router.get('/:car_plate', async function (req, res, next) {
   };
 
   debug('Reading from database, looking for car plate %o', car_plate)
-  read({car_plate}).then(handleSuccess).catch(handleError)
+  read({car_plate},{'completed_at':null}).then(handleSuccess).catch(handleError)
 
 })
 
