@@ -2,11 +2,12 @@ const { ApiProblem } = require('express-api-problem');
 const bodyParser = require('body-parser')
 const Debug = require('debug')
 const express = require('express')
-const openALPR = require('openalpr/dist/express-middleware')
+const openALPR = require('../../../middlewares/__mocks__/express-middleware')
 const router = express.Router()
-const { create, list, read, update } = require('../../../services/db')
+const { create, list, read } = require('../../../services/db')
+const { updateComplaintLocation } = require('./index.domain')
 
-const googleCloudStorage = require('../../../middlewares/googleCloudStorage')
+const googleCloudStorage = require('../../../middlewares/__mocks__/googleCloudStorage')
 const multerUpload = require('../../../middlewares/multerUpload')
 
 const debug = Debug('app:api:routes:v1:parkings')
@@ -116,38 +117,8 @@ router.post(
  * PATCH /v1/parkings/
  */
 router.patch('/', bodyParser.json(), async (req, res, next) => {
-  debug('Getting request body data')
   const { uuid, coordinates } = req.body
-  const whereObject = { 'uuid': uuid }
-
-  debug('Getting data from database with %o', whereObject)
-  read(whereObject).then(parking => {
-    debug('Row retrieved from database: %d', parking)
-    const { completed_at } = parking[0]
-
-    if (completed_at){
-      debug('Parking report completed before')
-      next(new ApiProblem({ status: 405, title: 'Parking report is already completed' }))
-    }
-    else {
-      debug('Updating parking report with coordinates %d', coordinates)
-
-      const updateObject = { 'coordinates': coordinates }
-      update(whereObject, updateObject, true).then(data => {
-        debug('Success on update parking report')
-        res.status(200).json({
-          status: 'sucess',
-          data: whereObject
-       })
-     }).catch(error => {
-        debug('Error when trying to update data: %o', error)
-        next(new ApiProblem({ status: 500, title: 'Error when trying to update data' }))
-     })
-   }
- }).catch(error => {
-    debug('Can not retrieve parking data: %o', error)
-    next(new ApiProblem({ status: 500, title: 'Can not retrieve parking data' }))
- })
+  updateComplaintLocation(uuid, next, coordinates, res);
 })
 
 

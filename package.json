@@ -18,8 +18,10 @@
     "debug": "DEBUG=app:*,openalpr:* nodemon --exec \"clear && ./bin/www\" --signal SIGTERM",
     "deploy:heroku": "git push heroku master",
     "develop:heroku": "nodemon --exec \"clear && heroku local\" --signal SIGTERM",
-    "heroku-postbuild": "node scripts/gcp-setup.js && knex migrate:latest",
+    "heroku-postbuild": "node scripts/gcp-setup.js && npm run knex:migrate:latest",
     "install:clean": "rm -rf node_modules && npm install",
+    "knex:migrate:latest": "knex migrate:latest",
+    "knex:seed:run": "knex seed:run",
     "start": "node ./bin/www",
     "test": "jest",
     "testc": "jest --coverage",
@@ -77,6 +79,7 @@
     "husky": "4.2.5",
     "jest": "26.4.2",
     "nodemon": "2.0.4",
+    "pg": "^8.3.0",
     "supertest": "4.0.2"
   },
   "engines": {

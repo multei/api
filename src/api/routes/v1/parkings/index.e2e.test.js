@@ -32,12 +32,12 @@ describe('/v1/parkings', function () {
 		const car_plate = 'FUM2296'
 		const result = await request(app).get(`/v1/parkings/${car_plate}`)
 		const parking = result.body.data.parkings[0]
-		
+
 		expect(result.status).toBe(200)
 		expect(parking.car_plate).toBe(car_plate)
 		expect(parking.uuid).toBeDefined()
 		expect(parking.completed_at).toBeDefined()
-		
+
 	 })
 
 	afterAll(async done => {
