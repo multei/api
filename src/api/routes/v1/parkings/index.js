@@ -5,7 +5,7 @@ const express = require('express')
 const openALPR = require('../../../middlewares/__mocks__/express-middleware')
 const router = express.Router()
 const { create, list, read } = require('../../../services/db')
-const { updateComplaintLocation } = require('./index.domain')
+const { finishComplaint } = require('./index.domain')
 
 const googleCloudStorage = require('../../../middlewares/__mocks__/googleCloudStorage')
 const multerUpload = require('../../../middlewares/multerUpload')
@@ -118,7 +118,7 @@ router.post(
  */
 router.patch('/', bodyParser.json(), async (req, res, next) => {
   const { uuid, coordinates } = req.body
-  updateComplaintLocation(uuid, next, coordinates, res);
+  finishComplaint(res, next, uuid, coordinates);
 })
 
 
