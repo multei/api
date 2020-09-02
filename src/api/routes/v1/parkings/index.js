@@ -5,7 +5,7 @@ const express = require('express')
 const openALPR = require('../../../middlewares/__mocks__/express-middleware')
 const router = express.Router()
 const { create, list, read } = require('../../../services/db')
-const { finishComplaint } = require('./index.domain')
+const { saveInitializedComplaint, finishComplaint } = require('./index.domain')
 
 const googleCloudStorage = require('../../../middlewares/__mocks__/googleCloudStorage')
 const multerUpload = require('../../../middlewares/multerUpload')
@@ -75,41 +75,8 @@ router.post(
     googleCloudStorage.uploadFile('car_front_photo'),
   ],
   async function(req, res, next) {
-    debug('Getting request body data')
-    const { files, recognitionData } = req;
-    const { car_front_photo } = recognitionData;
-    const { plate, vehicle: { color, make, make_model } } = recognitionData['car_front_photo'].results[0];
-
-    const data = {
-      ...req.body,
-      car_color: color[0].name,
-      car_front_photo_uri: files['car_front_photo'].cloudStoragePublicUrl,
-      car_front_photo_recognition_data: car_front_photo,
-      car_make: make[0].name,
-      car_make_model: make_model[0].name,
-      car_plate: plate,
-    }
-    debug('Data to be persisted: %o', data)
-
-    const handleSuccess = response => {
-      debug('Row saved at database with success: %o', data)
-      res.status(200).json({
-        status: 'success',
-        data: {
-          uuid: response[0],
-          parkings: data
-        }
-      })
-    }
-
-    const handleError = error => {
-      debug('Row not saved at database. Error: %O', error)
-      next(new ApiProblem({ status: 500, title: 'Error when trying to save data', detail: 'It is an internal server error'}))
-    }
-
-    debug('Saving on database...')
-
-    create(data).then(handleSuccess).catch(handleError)
+    const data = createComplaintObject(req)
+    saveInitializedComplaint(data, res, next);
   }
 )
 
@@ -131,4 +98,21 @@ router.delete('/:param', bodyParser.json(), async (req, res, next) => {
   next(new ApiProblem({ status: 405, title: 'Deleting parking is not allowed' }))
 })
 
+function createComplaintObject(req) {
+  const { files, recognitionData } = req;
+    const { car_front_photo } = recognitionData;
+    const { plate, vehicle: { color, make, make_model } } = recognitionData['car_front_photo'].results[0];
+
+  return {
+    ...req.body,
+    car_color: color[0].name,
+    car_front_photo_uri: files['car_front_photo'].cloudStoragePublicUrl,
+    car_front_photo_recognition_data: car_front_photo,
+    car_make: make[0].name,
+    car_make_model: make_model[0].name,
+    car_plate: plate,
+  };
+}
+
 module.exports = router
+

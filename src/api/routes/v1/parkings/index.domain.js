@@ -1,7 +1,21 @@
 const { isCompleted } = require('./validator')
-const { read, update } = require('../../../services/db')
+const { create, read, update } = require('../../../services/db')
 const { ApiProblem } = require('express-api-problem');
 
+function saveInitializedComplaint(data, res, next) {
+
+  const handleSuccess = response => {
+    res.status(200).json({
+      status: 'success',
+      data: {uuid: response[0], parkings: data }
+    })
+  }
+  const handleError = error => {
+    next(new ApiProblem({ status: 500, title: 'Error when trying to save data', detail: 'It is an internal server error'}))
+  }
+
+  create(data).then(handleSuccess).catch(handleError);
+}
 
 function finishComplaint(res, next, uuid, coordinates) {
   const whereObject = { 'uuid': uuid }
@@ -31,4 +45,4 @@ function updateComplaintLocation(res, next, whereObject, coordinates) {
   });
 }
 
-module.exports = { finishComplaint }
+module.exports = { saveInitializedComplaint, finishComplaint }
