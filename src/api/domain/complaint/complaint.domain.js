@@ -1,4 +1,3 @@
-const { isCompleted } = require("../../routes/v1/parkings/validator");
 const { create, read, update } = require("../../services/db");
 const { ApiProblem } = require("express-api-problem");
 const {  ComplaintAlreadyCompletedException, CanNotRetrieveParkingDataException, CanNotUpdateData } = require("./complaint.exceptions");
@@ -41,4 +40,9 @@ function updateComplaintLocation(whereObject, coordinates) {
   });
 }
 
-module.exports = { saveInitializedComplaint, finishComplaint };
+function isCompleted(complaint) {
+  return complaint.completed_at ? true : false
+}
+
+
+module.exports = { saveInitializedComplaint, finishComplaint, isCompleted };
