@@ -1,4 +1,3 @@
-const { ApiProblem } = require("express-api-problem");
 const bodyParser = require("body-parser");
 const Debug = require("debug");
 const express = require("express");
@@ -6,6 +5,8 @@ const openALPR = require("../../../middlewares/__mocks__/express-middleware");
 const router = express.Router();
 const {list, read } = require("../../../services/db");
 const { saveInitializedComplaint, finishComplaint } = require("../../../domain/complaint/complaint.domain");
+const { CanNotSaveDataException, NoComplaintsFoundException, CanNotRetrieveParkingDataException, DeletingComplaintNotAllowedException } = require("../../../domain/complaint/complaint.exceptions");
+
 
 const googleCloudStorage = require("../../../middlewares/__mocks__/googleCloudStorage");
 const multerUpload = require("../../../middlewares/multerUpload");
@@ -22,18 +23,10 @@ router.use(bodyParser.urlencoded({ extended: false, limit: "1mb" }));
  */
 router.get("/", bodyParser.json(), async function (req, res, next) {
   const handleSuccess = (data) => {
-    debug("Success on listing parkings!");
     res.status(200).json({ status: "success", data: { parkings: data } });
   };
   const handleError = (error) => {
-    debug("Error on listing parkings: %o", error);
-    next(
-      new ApiProblem({
-        status: 500,
-        title: "Error when trying to return parkings list",
-        detail: "It is an internal API issue",
-      })
-    );
+    next(CanNotRetrieveParkingDataException());
   };
 
   debug("Listing parkings...");
@@ -49,34 +42,17 @@ router.get("/:car_plate", async function (req, res, next) {
   const car_plate = req.params["car_plate"];
 
   const handleSuccess = (data) => {
-    debug("Success on listing data");
 
     if (data.length === 0) {
-      return next(
-        new ApiProblem({
-          status: 404,
-          title: "No parkings found with this plate",
-          detail: "Please check if car_plate is correct",
-          additional: { car_plate },
-        })
-      );
+      return next(NoComplaintsFoundException());
     }
 
     res.status(200).json({ status: "success", data: { parkings: data } });
   };
 
   const handleError = (error) => {
-    debug("Error: %o", error);
-    return next(
-      new ApiProblem({
-        status: 500,
-        title: "Can not retrieve parkings",
-        detail: "This is an internal API error",
-      })
-    );
+    return next(CanNotRetrieveParkingDataException);
   };
-
-  debug("Reading from database, looking for car plate %o", car_plate);
   read({ car_plate }, { completed_at: null })
     .then(handleSuccess)
     .catch(handleError);
@@ -102,13 +78,7 @@ router.post(
       });
     };
     const handleError = (error) => {
-      next(
-        new ApiProblem({
-          status: 500,
-          title: "Error when trying to save data",
-          detail: "It is an internal server error",
-        })
-      );
+      next(CanNotSaveDataException());
     };
 
     saveInitializedComplaint(data, res, handleSuccess, handleError);
@@ -139,9 +109,7 @@ router.patch("/", bodyParser.json(), async (req, res, next) => {
  * Can not delete a illegal parking
  */
 router.delete("/:param", bodyParser.json(), async (req, res, next) => {
-  next(
-    new ApiProblem({ status: 405, title: "Deleting parking is not allowed" })
-  );
+  next(DeletingComplaintNotAllowedException());
 });
 
 function createComplaintObject(req) {

@@ -1,6 +1,6 @@
 const { create, read, update } = require("../../services/db");
 const { ApiProblem } = require("express-api-problem");
-const {  ComplaintAlreadyCompletedException, CanNotRetrieveParkingDataException, CanNotUpdateData } = require("./complaint.exceptions");
+const {  ComplaintAlreadyCompletedException, CanNotRetrieveParkingDataException, CanNotUpdateDataException } = require("./complaint.exceptions");
 const { Result } = require("express-validator");
 
 function saveInitializedComplaint(data, res, handleSuccess, handleError) {
