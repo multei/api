@@ -1,4 +1,4 @@
-const { create, read, update } = require("../../services/db");
+const { create, read, update, list } = require("../../services/db");
 const { ApiProblem } = require("express-api-problem");
 const {  ComplaintAlreadyCompletedException, CanNotRetrieveParkingDataException, CanNotUpdateDataException } = require("./complaint.exceptions");
 const { Result } = require("express-validator");
@@ -44,5 +44,14 @@ function isCompleted(complaint) {
   return complaint.completed_at ? true : false
 }
 
+function retrieveAllComplaints(handleSuccess, handleError){
+  list().then(handleSuccess).catch(handleError);
+}
 
-module.exports = { saveInitializedComplaint, finishComplaint, isCompleted };
+function retrieveComplaintByCarPlate(car_plate, handleSuccess, handleError)
+{
+  read({ car_plate }, { completed_at: null }).then(handleSuccess).catch(handleError);
+}
+
+
+module.exports = { saveInitializedComplaint, finishComplaint, isCompleted, retrieveAllComplaints, retrieveComplaintByCarPlate};

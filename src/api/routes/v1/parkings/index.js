@@ -3,8 +3,8 @@ const Debug = require("debug");
 const express = require("express");
 const openALPR = require("../../../middlewares/__mocks__/express-middleware");
 const router = express.Router();
-const {list, read } = require("../../../services/db");
-const { saveInitializedComplaint, finishComplaint } = require("../../../domain/complaint/complaint.domain");
+const { read } = require("../../../services/db");
+const { saveInitializedComplaint, finishComplaint, retrieveAllComplaints, retrieveComplaintByCarPlate } = require("../../../domain/complaint/complaint.domain");
 const { CanNotSaveDataException, NoComplaintsFoundException, CanNotRetrieveParkingDataException, DeletingComplaintNotAllowedException } = require("../../../domain/complaint/complaint.exceptions");
 
 
@@ -19,7 +19,7 @@ router.use(bodyParser.urlencoded({ extended: false, limit: "1mb" }));
 /**
  * GET /v1/parkings
  *
- * Retrieve a list of illegal parkings
+ * Retrieve a list of complaints
  */
 router.get("/", bodyParser.json(), async function (req, res, next) {
   const handleSuccess = (data) => {
@@ -29,8 +29,7 @@ router.get("/", bodyParser.json(), async function (req, res, next) {
     next(CanNotRetrieveParkingDataException());
   };
 
-  debug("Listing parkings...");
-  list().then(handleSuccess).catch(handleError);
+  retrieveAllComplaints(handleSuccess, handleError)
 });
 
 /**
@@ -51,11 +50,10 @@ router.get("/:car_plate", async function (req, res, next) {
   };
 
   const handleError = (error) => {
-    return next(CanNotRetrieveParkingDataException);
+    return next(CanNotRetrieveParkingDataException());
   };
-  read({ car_plate }, { completed_at: null })
-    .then(handleSuccess)
-    .catch(handleError);
+
+  retrieveComplaintByCarPlate(car_plate, handleSuccess, handleError)
 });
 
 /**
