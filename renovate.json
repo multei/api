@@ -10,6 +10,12 @@
     {
       "updateTypes": ["minor", "patch", "pin", "digest"],
       "automerge": true
+    },
+    {
+      "automerge": false,
+      "enabled": true,
+      "label": ["dependencies", "husky", "renovate"],
+      "packageNames": ["husky"]
     }
   ],
   "reviewers": ["jimmyandrade"],
