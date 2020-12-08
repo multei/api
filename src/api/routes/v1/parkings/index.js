@@ -1,14 +1,14 @@
 const bodyParser = require("body-parser");
 const Debug = require("debug");
 const express = require("express");
-const openALPR = require("../../../middlewares/__mocks__/express-middleware");
+const openALPR = require('openalpr/dist/express-middleware')
 const router = express.Router();
 const { read } = require("../../../services/db");
 const { saveInitializedComplaint, finishComplaint, retrieveAllComplaints, retrieveComplaintByCarPlate } = require("../../../domain/complaint/complaint.domain");
 const { CanNotSaveDataException, NoComplaintsFoundException, CanNotRetrieveParkingDataException, DeletingComplaintNotAllowedException } = require("../../../domain/complaint/complaint.exceptions");
 
 
-const googleCloudStorage = require("../../../middlewares/__mocks__/googleCloudStorage");
+const googleCloudStorage = require('../../../middlewares/googleCloudStorage')
 const multerUpload = require("../../../middlewares/multerUpload");
 
 const debug = Debug("app:api:routes:v1:parkings");
