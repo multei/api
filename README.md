@@ -105,7 +105,7 @@ To be able to upload, you need to have a service account on Google Cloud Storage
 So you need to:
 
 1. Go to [APIs & Services](https://console.cloud.google.com/apis/dashboard);
-2. On the menu on left panel, tap on [Credentials](https://console.cloud.google.com/apis/credentials);
+2. On the menu on the left panel, tap on [Credentials](https://console.cloud.google.com/apis/credentials);
 3. At **Service Accounts** section, tap on [Manage Service Accounts](https://console.cloud.google.com/iam-admin/serviceaccounts);
 4. Click on [Create Service Account](https://console.cloud.google.com/iam-admin/serviceaccounts/create);
 5. Type a name, ID and description for the new Service Account;
@@ -114,7 +114,7 @@ So you need to:
 8. On **Create a key (optional)**, click on **+Create Key**;
 9. On **Key type**, choose the **JSON (recommended)** option;
 10. Click on **Create**. The JSON key file will be downloaded;
-11. Put this key file on `config/` directory on repository (create the directory if it does not exist);
+11. Put this key file on `config/` directory on the repository (create the directory if it does not exist);
     **Never commit this file!**
 12. At local development environment, on your .env file, set `GOOGLE_APPLICATION_CREDENTIALS` to `config/multei-{key}.json`, where `multei-{key}.json` is the actual filename;
 13. If your application was already running, restart it.
@@ -133,7 +133,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/hpsmatheus"><img src="https://avatars2.githubusercontent.com/u/29740936?v=4" width="100px;" alt=""/><br /><sub><b>hpsmatheus</b></sub></a><br /><a href="#ideas-hpsmatheus" title="Ideas, Planning, & Feedback">🤔</a></td>
   </tr>
 </table>
-
+__
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
