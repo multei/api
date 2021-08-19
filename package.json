@@ -22,6 +22,7 @@
     "install:clean": "rm -rf node_modules && npm install",
     "knex:migrate:latest": "knex migrate:latest",
     "knex:seed:run": "knex seed:run",
+    "open:heroku": "open http://localhost:5000",
     "start": "node ./bin/www",
     "test": "jest",
     "testc": "jest --coverage",
